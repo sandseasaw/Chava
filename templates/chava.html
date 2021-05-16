@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CHAVA</title>
+<style>
+*{margin: 0;padding: 0;}
+.head{
+    font-size: 40px;
+    text-align: center;
+    margin-top: 5%;
+    font-family: 'GlacialIndifferenceRegular';
+    color: black;
+    font-style: normal;
+    font-weight: lighter;
+}
+.box {
+    display:flex;
+    padding: 25px 35px;
+    margin-top: 2.1%;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+.text{
+    font-size: 100px;
+    color: #fdfdfd;
+    margin-top: 2px;
+    margin-bottom: 20px;
+    font-family: 'Vidaloka', serif;
+    text-shadow: black 0.1em 0.1em 0.2em
+}
+a{
+    display:flex;
+    padding: 20px 70px;
+    font-size: 35px;
+    transform: translateY(30px);
+    cursor: pointer;
+    border: 0px;
+    position: relative;
+    transition: all 0.25s ease;
+    text-decoration: none;
+}
+.button{
+    background-color: #BB9F34;
+    color: #EFEFEF;
+    border-radius: 9px;
+    box-shadow: 3px 3px #9b9b9b;
+    transition: all 0.25s ease;
+    position: relative;
+    
+}
+.text1{
+    background-color: #EFEFEF;
+    font-size: 25px;
+    text-align: center;
+    display: block;
+    font-family: 'GlacialIndifferenceRegular';
+    font-weight: normal;
+    font-style: normal;
+    margin-top: 2%;
+} 
+.button:hover{
+    transform: translate(-10px, -10px);
+}
+.button:hover::before{
+    transform: translate(10px, 10px);
+}
+.button:hover::after{
+    transform: translate(6px, 6px);
+}
+.button::after, .button::before{
+    position: absolute;
+    opacity: 40%;
+    border-radius: inherit;
+    box-shadow: 3px 3px #9b9b9b;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    transition: all 0.25s ease;
+}
+.text2{
+    background-color: #EFEFEF;
+    font-family: 'HK Grotesk', sans-serif;
+    display:flex;
+    justify-content: center;
+    margin-top: 0.7%;
+    font-weight: 600;
+}
+.bg {
+    background-image: url("/static/images/chaa.mp4");
+    background-size: 100%;
+ }
+ #videoBG {
+    position:fixed;
+    z-index: -1;
+}
+@media (min-aspect-ratio: 16/9) {
+    #videoBG {
+        width:100%;
+        height: auto;
+    }
+}
+@media (max-aspect-ratio: 16/9) {
+    #videoBG { 
+        width:auto;
+        height: 100%;
+    }
+}
+</style>
+</head>
+<body>
+    <html>
+    <head>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="head" style="lighter; font-style: lighter;"> 
+            <p style="font-size: 90px; font-weight: lighter;"> Welcome to </p>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css"> 
+        </div>
+        <div class="box bg">
+            <a class="text">CHAVATHAILAND </a>
+            <video id="videoBG" poster="poster.JPG" autoplay muted loop>
+                <source src="/static/images/cha.mp4" type="video/mp4">
+            </video>
+            <link rel="preconnect" href="https://fonts.gstatic.com">
+            <link href="https://fonts.googleapis.com/css2?family=Vidaloka&display=swap" rel="stylesheet">
+        </div>
+            <div class="text1">
+                <br>
+                <p> 100% Biodegradable </p>
+                <p2> Tableware from natural </p2>
+                <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/glacial-indifference" type="text/css"/>
+
+            <div class="text2" style="background-color: #EFEFEF;">
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@xz/fonts@1/serve/hk-grotesk.min.css"> 
+                <a class="button" href="/home/" style="margin-bottom: 50px;">join our website!</a>
+            </div>
+    </body>
+</html>
+</body>   
+</html>

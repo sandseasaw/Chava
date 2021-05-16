@@ -1,0 +1,46 @@
+{% extends "homepage.html" %}
+
+{% block content %}
+
+{% load cart_tag %}
+
+{% if request.session.cart|length == 0 %}
+<center><h1 style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight: bold; color: #004AAD; margin-top: 200px; margin-bottom: 50px;" >Your cart is currently empty</h1></center>
+<center><a class="btn btn-primary btn-lg" href="/product_all/" role="button">Return To Product</a></center>
+{% else %}
+<div class="container">
+    <div class="col-md-4 text-center">
+    </div>
+    <div class="col-md-4" style="background-color: #EFEFEF;">
+        {% for key,value in request.session.cart.items %}
+        <img src="{{value.image}}" width="120" height="80" style="margin-top: 10px;">
+        <a href="{% url 'item_clear' value.product_id %}"><button type="button" class="close" style="margin-top: 10px;"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button></a><br><br>
+        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;">
+            Product : {{value.name}}<br>
+            Price : {{value.price}} THB<br>
+            Quantity : {% if value.quantity == 1 %}
+                            <a href="{% url 'item_clear' value.product_id %}" style="margin-left: 10px; margin-right: 10px; border-radius: 50%; background-color: white;"><i class="fa fa-minus" aria-hidden="true" style="width: 20px; height: 20px; text-align: center; color: black;"></i></a>
+                       {% else %} 
+                            <a href="{% url 'item_decrement' value.product_id %}" style="margin-left: 10px; margin-right: 10px; border-radius: 50%; background-color: white;"><i class="fa fa-minus" aria-hidden="true" style="width: 20px; height: 20px; text-align: center; color: black;"></i></a>
+                       {% endif %} 
+                            {{value.quantity}}
+                        <a href="{% url 'item_increment' value.product_id %}" style="margin-left: 10px; margin-right: 10px; border-radius: 50%; background-color: white;"><i class="fa fa-plus" aria-hidden="true" style="width: 20px; height: 20px; text-align: center; color: black;"></i></a><br>
+            Subtotal : {{ value.price|multiply:value.quantity }} THB
+        </p>
+        <hr style="height: 1.5px; border-width:0;color:gray;background-color:#000000">
+        {% endfor %}
+        <a href="/product_all/" style="color: #EFEFEF;"><button class="btn btn-lg btn-light" style="background-color: #bb9f34;"> BACK </button></a>
+        <a href="/card/" style="color: #EFEFEF;"><button class="btn btn-light btn-lg" style="background-color: #bb9f34; margin-left: 150px;">NEXT</button></a>
+    </div>
+</div>
+
+{% endif %}
+
+
+
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "homepage.html" %}
+
+{% block content %}
+
+  {% if form.errors %}
+    <center><p style="color: #bb9f34">Your username and password didn't match. Please try again.</p></center>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <center><p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p></center>
+    {% else %}
+      
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 text-center">
+          </div>
+          <div class="col-md-4  text-center" style="background-color: #bb9f34;">
+            <p style="text-align: right; margin-top: 20px;"><a href="/accounts/sign_up/?next={{request.path}}" style="color: white;">Sign Up</a></p>
+            <i class="fa fa-5x fa-user-circle-o" style="margin-top: 20px; margin-bottom: 30px; color: white;"></i>
+            <center><p style="color: white;">Please login to shopping whatever you want.</p></center>
+            <form method="post" action="{% url 'login' %}">
+              {% csrf_token %}
+              <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon"><i class="fa fa-lg fa-user" style="color: #bb9f34;"></i></span>
+                
+                <input type="input" class="form-control" name="username" id="inputEmail" placeholder="USERNAME" required >
+                
+              </div>
+              <div class="input-group" style="margin-bottom: 10px;">
+                <span class="input-group-addon"><i class="fa fa-lg fa-lock" style="color: #bb9f34;"></i></span>
+                
+                <input type="password" class="form-control" name="password" id="inputPass" placeholder="PASSWORD" required>
+                
+              </div>
+                
+                  
+                
+              <p style="text-align: right;"><a href="{% url 'password_reset' %}" style="color: white;">Forgot password?</a></p>
+              <input type="submit" class="btn btn-lg btn-light" value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;LOGIN&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" style="margin-bottom: 40px; margin-top: 10px; background-color: white; color: #bb9f34;"/>
+              <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+          </div>
+        </div>
+      </div>
+    {% endif %}
+  {% endif %}
+
+  
+
+
+{% endblock %}

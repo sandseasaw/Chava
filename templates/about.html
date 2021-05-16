@@ -1,0 +1,919 @@
+<html>
+
+<head>
+    <title>CHAVA</title>
+    <!--footer link-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--bootstrap link-->
+    <meta charset="UTF-8">
+    <meta name="viewpoint" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="https://fontlibrary.org//face/glacial-indifference" type="text/css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <script>
+        setTimeout(function () {
+            $('#myModal').modal();
+        }, 120000);
+    </script>
+    <style>
+        .social {
+            margin: 0;
+            padding: 0;
+        }
+
+        .social ul {
+            margin: 0;
+            padding: 5px;
+        }
+
+        .social ul li {
+            margin: 5px;
+            list-style: none outside none;
+            display: inline-block;
+        }
+
+        .social i {
+            width: 40px;
+            height: 40px;
+            color: #FFF;
+            background-color: #000000;
+            font-size: 22px;
+            text-align: center;
+            padding-top: 12px;
+            border-radius: 50%;
+            -moz-border-radius: 50%;
+            -webkit-border-radius: 50%;
+            -o-border-radius: 50%;
+            transition: all ease 0.3s;
+            -moz-transition: all ease 0.3s;
+            -webkit-transition: all ease 0.3s;
+            -o-transition: all ease 0.3s;
+            -ms-transition: all ease 0.3s;
+        }
+
+        .social i:hover {
+            color: #FFF;
+            text-decoration: none;
+            transition: all ease 0.3s;
+            -moz-transition: all ease 0.3s;
+            -webkit-transition: all ease 0.3s;
+            -o-transition: all ease 0.3s;
+            -ms-transition: all ease 0.3s;
+        }
+
+        .social .fa-facebook:hover {
+            background: #4060A5;
+        }
+
+        .social .fa-twitter:hover {
+            background: #00ABE3;
+        }
+
+        .social .fa-instagram:hover {
+            background: palevioletred;
+        }
+
+        .social .fa-phone:hover {
+            background: #0cd638;
+        }
+
+        .navbar-nav a {
+            font-family: "Vidaloka";
+            color: #444040;
+        }
+
+        footer {
+            background-image: url("/static/images/bgchava.png");
+            margin-top: 50px;
+        }
+
+        body {
+            background-color: white;
+        }
+
+        .container {
+            max-width: 1080px;
+        }
+        /*cart badge*/
+        .badge {
+            padding-left: 9px;
+            padding-right: 9px;
+            -webkit-border-radius: 9px;
+            -moz-border-radius: 9px;
+            border-radius: 10px;
+        }
+
+        .label-warning[href],
+        .badge-warning[href] {
+            background-color: #c67605;
+        }
+        #lblCartCount {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: 12px;
+            background: #2f00ff;
+            color: #fff;
+            padding: 1 5px;
+            vertical-align: top;
+            margin-left: -5px; 
+        }
+    </style>
+
+    <!--Scrolltopcontrol-->
+
+    <script>
+        //** jQuery Scroll to Top Control script- (c) Dynamic Drive DHTML code library: http://www.dynamicdrive.com.
+        //** Available/ usage terms at http://www.dynamicdrive.com (March 30th, 09')
+        //** v1.1 (April 7th, 09'):
+        //** 1) Adds ability to scroll to an absolute position (from top of page) or specific element on the page instead.
+        //** 2) Fixes scroll animation not working in Opera. 
+
+
+        var scrolltotop = {
+            //startline: Integer. Number of pixels from top of doc scrollbar is scrolled before showing control
+            //scrollto: Keyword (Integer, or "Scroll_to_Element_ID"). How far to scroll document up when control is clicked on (0=top).
+            setting: { startline: 100, scrollto: 0, scrollduration: 600, fadeduration: [500, 100] },
+            controlHTML: '<img src="https://scontent.futp1-1.fna.fbcdn.net/v/t1.15752-9/cp0/86715422_1319096198277836_2134319676316975104_n.png?_nc_cat=103&ccb=1-3&_nc_sid=58c789&_nc_ohc=yj5Aq5i4hzoAX87Ldu2&_nc_ht=scontent.futp1-1.fna&tp=30&oh=f699f70ea06caecf64a4f6328927ade0&oe=60C23D36" style="width:41px; height:41px;" />', //HTML for control, which is auto wrapped in DIV w/ ID="topcontrol"
+            controlattrs: { offsetx: 15, offsety: 30 }, //offset of control relative to right/ bottom of window corner
+            anchorkeyword: '#top', //Enter href value of HTML anchors on the page that should also act as "Scroll Up" links
+
+            state: { isvisible: false, shouldvisible: false },
+
+            scrollup: function () {
+                if (!this.cssfixedsupport) //if control is positioned using JavaScript
+                    this.$control.css({ opacity: 0 }) //hide control immediately after clicking it
+                var dest = isNaN(this.setting.scrollto) ? this.setting.scrollto : parseInt(this.setting.scrollto)
+                if (typeof dest == "string" && jQuery('#' + dest).length == 1) //check element set by string exists
+                    dest = jQuery('#' + dest).offset().top
+                else
+                    dest = 0
+                this.$body.animate({ scrollTop: dest }, this.setting.scrollduration);
+            },
+
+            keepfixed: function () {
+                var $window = jQuery(window)
+                var controlx = $window.scrollLeft() + $window.width() - this.$control.width() - this.controlattrs.offsetx
+                var controly = $window.scrollTop() + $window.height() - this.$control.height() - this.controlattrs.offsety
+                this.$control.css({ left: controlx + 'px', top: controly + 'px' })
+            },
+
+            togglecontrol: function () {
+                var scrolltop = jQuery(window).scrollTop()
+                if (!this.cssfixedsupport)
+                    this.keepfixed()
+                this.state.shouldvisible = (scrolltop >= this.setting.startline) ? true : false
+                if (this.state.shouldvisible && !this.state.isvisible) {
+                    this.$control.stop().animate({ opacity: 1 }, this.setting.fadeduration[0])
+                    this.state.isvisible = true
+                }
+                else if (this.state.shouldvisible == false && this.state.isvisible) {
+                    this.$control.stop().animate({ opacity: 0 }, this.setting.fadeduration[1])
+                    this.state.isvisible = false
+                }
+            },
+
+            init: function () {
+                jQuery(document).ready(function ($) {
+                    var mainobj = scrolltotop
+                    var iebrws = document.all
+                    mainobj.cssfixedsupport = !iebrws || iebrws && document.compatMode == "CSS1Compat" && window.XMLHttpRequest //not IE or IE7+ browsers in standards mode
+                    mainobj.$body = (window.opera) ? (document.compatMode == "CSS1Compat" ? $('html') : $('body')) : $('html,body')
+                    mainobj.$control = $('<div id="topcontrol">' + mainobj.controlHTML + '</div>')
+                        .css({ position: mainobj.cssfixedsupport ? 'fixed' : 'absolute', bottom: mainobj.controlattrs.offsety, right: mainobj.controlattrs.offsetx, opacity: 0, cursor: 'pointer' })
+                        .attr({ title: 'Scroll Back to Top' })
+                        .click(function () { mainobj.scrollup(); return false })
+                        .appendTo('body')
+                    if (document.all && !window.XMLHttpRequest && mainobj.$control.text() != '') //loose check for IE6 and below, plus whether control contains any text
+                        mainobj.$control.css({ width: mainobj.$control.width() }) //IE6- seems to require an explicit width on a DIV containing text
+                    mainobj.togglecontrol()
+                    $('a[href="' + mainobj.anchorkeyword + '"]').click(function () {
+                        mainobj.scrollup()
+                        return false
+                    })
+                    $(window).bind('scroll resize', function (e) {
+                        mainobj.togglecontrol()
+                    })
+                })
+            }
+        }
+
+        scrolltotop.init()
+    </script>
+    <style>
+        .tps-section {
+            width: 100%;
+            height: 500px;
+            -webkit-perspective: 10em;
+            -moz-perspective: 10em;
+            -ms-perspective: 10em;
+            -o-perspective: 10em;
+            perspective: 10em;
+            -webkit-perspective-origin: center bottom;
+            -moz-perspective-origin: center bottom;
+            -ms-perspective-origin: center bottom;
+            -o-perspective-origin: center bottom;
+            perspective-origin: center bottom;
+            -webkit-perspective-origin: 50% 50%;
+            -moz-perspective-origin: 50% 50%;
+            -ms-perspective-origin: 50% 50%;
+            -o-perspective-origin: 50% 50%;
+            perspective-origin: 50% 50%;
+            -webkit-transform-style: preserve-3d;
+            -moz-transform-style: preserve-3d;
+            -ms-transform-style: preserve-3d;
+            -o-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+        }
+
+
+        .tps-wrapper {
+            float: left;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+
+    <!--about1-->
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        .text2-abt1 {
+            font-weight: 300;
+            color: black;
+            font-family: 'GlacialIndifferenceRegular';
+        }
+
+        .abt1 {
+            margin-top: 150px;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(255, 255, 255, 05), rgba(255, 255, 255, 0.5)), url(https://scontent.xx.fbcdn.net/v/t1.15752-0/p206x206/176156911_501808721194889_943403524307571100_n.png?_nc_cat=100&ccb=1-3&_nc_sid=58c789&_nc_ohc=67W8f77FoFoAX_I9d3r&_nc_ad=z-m&_nc_cid=0&_nc_ht=scontent.xx&tp=30&oh=5d028ceeb68d121d44cbc7730e4bafc3&oe=60A542BD);
+            background-size: cover;
+        }
+
+        .abt1 .content-abt1 {
+            max-width: 1000px;
+            text-align: center;
+        }
+
+        .abt1 .content-abt1 .text1-abt1 {
+            font-family: 'GlacialIndifferenceRegular';
+            font-size: 4em;
+        }
+
+        .abt1 .content-abt1 .text2-abt1 {
+            font-size: 2.5em;
+            padding-top: 10%;
+        }
+
+        section {
+            padding: 0px;
+        }
+    </style>
+
+    <!--about2-->
+
+    <style>
+        .row-abt2 {
+            margin-top: 0;
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .row-abt2 .col50 {
+            position: relative;
+            width: 146.25%;
+        }
+
+        .col40 {
+            position: relative;
+            width: 65%;
+        }
+
+        .col60 {
+            position: relative;
+            width: 70%;
+            font-size: 1.4em;
+            left: 8%;
+            margin-top: 2.75%;
+        }
+
+        .title-abt2 {
+            background-color: #BB9F34;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+            font-family: 'GlacialIndifferenceRegular';
+            color: white;
+            padding-left: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'GlacialIndifferenceRegular';
+            color: #BB9F34;
+            font-size: 1em;
+            padding-left: 10px;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .row-abt2 .col50 .img-abt2 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 75%;
+
+        }
+
+        .row-abt2 .col50 .img-abt2 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .row-abt2 .col40 .imgbg-abt2 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 75%;
+        }
+
+        .row-abt2 .col40 .imgbg-abt2 img {
+            position: absolute;
+            top: 0;
+            left: 60%;
+            width: 35%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    <!--about3-->
+
+    <style>
+        .abt3 {
+            padding-top: 0;
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+        }
+
+        .row-abt3 {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #eee8d3;
+        }
+
+        .row-abt3 .col50 {
+            position: relative;
+            width: 48%;
+        }
+
+        .title-abt3 {
+            padding-top: 6%;
+            padding-left: 16%;
+            color: black;
+            font-size: 3.5em;
+            font-weight: 300px;
+            font-family: 'GlacialIndifferenceRegular';
+        }
+
+        .title-abt3 span {
+            color: #BB9F34;
+            font-weight: 700;
+            font-size: 1.5em;
+            font-family: 'GlacialIndifferenceRegular';
+
+        }
+
+        .text-abt3 {
+            font-family: 'GlacialIndifferenceRegular';
+            color: #BB9F34;
+            font-size: 1.5em;
+            padding-left: 60px;
+            padding-top: 30px;
+            text-align: center;
+            max-width: 100%;
+        }
+
+        .row-abt3 .col50 .img-abt3 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 100%;
+
+        }
+
+        .row-abt3 .col50 .img-abt3 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    <!--about4-->
+
+    <style>
+        .row-abt4 {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .row-abt4 .col20 {
+            position: relative;
+            width: 141%;
+        }
+
+        .col10 {
+            position: relative;
+            width: 80%;
+        }
+
+        .col30 {
+            position: relative;
+            width: 50%;
+            font-size: 1.4em;
+            left: 10%;
+            margin-top: 7%;
+        }
+
+        .title-abt4 {
+            background-color: #BB9F34;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+            font-family: 'GlacialIndifferenceRegular';
+            color: white;
+            padding-left: 30px;
+            text-align: center;
+        }
+
+        p {
+            font-family: 'GlacialIndifferenceRegular';
+            color: #BB9F34;
+            font-size: 1em;
+            padding-left: 10px;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .row-abt4 .col20 .img-abt4 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 75%;
+
+        }
+
+        .row-abt4 .col20 .img-abt4 img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .row-abt4 .col10 .imgbg-abt4 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 75%;
+
+        }
+
+        .row-abt4 .col10 .imgbg-abt4 img {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 45%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+    <!--about5-->
+
+    <style>
+        .row-abt5 {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            background-color: #eee8d3;
+        }
+
+        .row-abt5 .col80 {
+            position: relative;
+            width: 50%;
+        }
+
+        .col90 {
+            position: relative;
+            width: 60%;
+            font-size: 1.4em;
+            margin-top: 3.5%;
+            margin-left: 0px;
+        }
+
+        .col70 {
+            position: relative;
+            width: 30%;
+        }
+
+        p {
+            font-family: 'GlacialIndifferenceRegular';
+            color: #BB9F34;
+            font-size: 1em;
+            padding-left: 10px;
+            padding-top: 50px;
+            text-align: center;
+        }
+
+        .row-abt5 .col80 .img-abt5 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 0%;
+        }
+
+        .row-abt5 .col80 .img-abt5 img {
+            position: absolute;
+            top: 13%;
+            left: 55%;
+            width: 35%;
+            height: auto;
+            object-fit: cover;
+        }
+    </style>
+
+    <!--about6-->
+
+    <style>
+        .abt6 {
+            padding-top: 0;
+            position: relative;
+            width: 100%;
+            display: flex;
+        }
+
+        .row-abt6 {
+            position: relative;
+            width: 100%;
+            height: 90%;
+            display: flex;
+            justify-content: space-between;
+            background-color: white;
+        }
+
+        .row-abt6 .col100 {
+            position: relative;
+            width: 50%;
+        }
+
+        .row-abt6 .col110 {
+            position: relative;
+            width: 65%;
+        }
+
+        .title-abt6 {
+            padding-top: 100px;
+            padding-left: 100px;
+            color: black;
+            font-size: 5em;
+            font-weight: 300px;
+            font-family: 'GlacialIndifferenceRegular';
+        }
+
+        .title-abt6 span {
+            color: #BB9F34;
+            font-weight: 700;
+            font-size: 1.5em;
+            font-family: 'GlacialIndifferenceRegular';
+
+        }
+
+        .text-abt6 {
+            font-family: 'GlacialIndifferenceRegular';
+            color: #BB9F34;
+            font-size: 1.35em;
+            padding-left: 100px;
+            padding-top: 70px;
+            text-align: center;
+            width: 83%;
+        }
+
+        .row-abt6 .col110 .img-abt6 {
+            position: relative;
+            width: 100%;
+            min-height: 300px;
+            height: 90%;
+
+        }
+
+        .row-abt6 .col110 .img-abt6 img {
+            position: absolute;
+            top: 10%;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+
+
+</head>
+
+<body>
+<!--navbar-->
+<body>
+    <nav class="navbar navbar-light navbar-fixed-top" style="background-color: #fdfdfd;">
+        <div class="container-fluid">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar" style="background-color: black !important;"></span>
+                <span class="icon-bar" style="background-color: black !important;"></span>
+                <span class="icon-bar" style="background-color: black !important;"></span>                        
+            </button>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="{% url 'home' %}">H O M E</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="/about/">A B O U T <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/about/">BACKGROUND</a></li>
+                        <li><a href="/about/">INSPIRATION</a></li>
+                        <li><a href="/about/">FOUNDER</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">P R O D U C T<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/product_all/">HOW TO REUSE OUR PRODUCT</a></li>
+                    </ul>
+                </li>
+                <li><a href="/contact/">C O N T A C T&nbsp;&nbsp;U S</a></li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="#search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                  </svg></a>
+                </li>
+                {% if user.is_authenticated %}
+                <li><a href="#" style="text-transform: uppercase;"><span class="glyphicon glyphicon-user"></span>  &nbsp;{{ user.get_username }}</a></li>
+                <li><a href="{% url 'logout'%}?next={{request.path}}"><span class="glyphicon glyphicon-log-out"></span>  &nbsp;LOGOUT</a></li>
+                <li><a href="{% url 'cart_detail'%}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg><span class="badge badge-warning" id='lblCartCount'>
+                    {{ request.session.cart|length }}
+                       </span></a>
+                </li>
+                {% else %}
+                <li><a href="/accounts/sign_up/?next={{request.path}}"><span class="glyphicon glyphicon-user"></span>  SIGN UP</a></li>
+                <li><a href="{% url 'login'%}?next={{request.path}}"><span class="glyphicon glyphicon-log-in"></span>  &nbsp;LOGIN</a></li>
+                <li><a href="{% url 'login'%}?next={{request.path}}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-fill" viewBox="0 0 16 16">
+                    <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+                  </svg></a>
+                </li>
+                {% endif %} 
+                
+                
+            </ul>
+          </div>
+        </div>
+        <div class="container-fluid" style="background-color: #bb9f34;">
+            <center><h1 style="font-family: Vidaloka; color: #fdfdfd; margin-top: 20px; margin-bottom: 20px;">C H A V A</h1></center>
+        </div>
+    </nav>
+<!--modal-->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+      <div class="modal-content">
+        <div class="modal-header" style="background-color: #bb9f34; color: #fdfdfd;">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title" id="myModalLabel" >WE DON'T SHIP TO YOU YET</h4>
+        </div>
+        <div class="modal-body" style="background-color: #bb9f34; color: #fdfdfd;">
+          <p>sign up here and we'll let you know about shipping updates, new product. unsubscribe anytime.</p>
+          <form>
+              <div class="form-group" style="background-color: #bb9f34; color: #fdfdfd;">
+                  <input type="email" class="form-control" aria-describedby="emailHelp" placeholder="EMAIL ADDRESS">
+              </div>
+          </form>
+        </div>
+        <div class="modal-footer" style="background-color: #bb9f34;">
+          <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:#fdfdfd; color: #bb9f34;">Close</button>
+          <button type="button" class="btn btn-primary" style="background-color:#fdfdfd; color: #bb9f34; border-color: #fdfdfd;">Save changes</button>
+        </div>
+      </div>
+    </div>
+</div>
+
+    <!--body-->
+    <!--
+      don't forget to type ->  style="margin-top: 150px;"
+      to prevent the nav-bar
+  -->
+    <!--about1-->
+    <section class="abt1" data-aos="fade-down">
+        <div class="content-abt1">
+            <h1 class="text1-abt1">
+                <b>0% PLASTIC - THE HEALTHY CHOICE</b>
+            </h1>
+            <p class="text2-abt1">CHAVA IS 100% WATER HYACINTH BIOMASS</p>
+        </div>
+    </section>
+
+    <!--about2-->
+
+    <section class="abt2" id="abt2" data-aos="fade-up">
+        <div class="row-abt2">
+            <div class="col50">
+                <div class="img-abt2">
+                    <img src="https://pbs.twimg.com/media/E0CYwh1UUAAbKoX?format=jpg&name=medium">
+                </div>
+            </div>
+            <div class="col60">
+                <p style="text-align: left;">
+                    The beginning of this natural container start with that
+                    during the COVID-19 situation, we like to order Food
+                    delivery so much, because it answers New Normal Life. But
+                    we have found that during this period the rate of plastic
+                    usage has increased, since in one order there are at least
+                    6-8 pieces of plastic. Which affects the environment and
+                    the world a lot; it causes climate change from plastic
+                    waste disposal improperly. We know that we cannot stop
+                    the current of Food delivery, so we want to make the
+                    industry more sustainable for our lovely earthly friends.</p>
+            </div>
+            <div class="col40">
+                <div class="imgbg-abt2">
+                    <img src="https://pbs.twimg.com/media/E0CgGiwVcAMumih?format=jpg&name=large">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--about3-->
+
+    <section class="abt3" id="abt3" data-aos="fade-left">
+        <div class="row-abt3">
+            <div class="col50">
+                <h2 class="title-abt3 quote-text"><b><span><br><br>O</span>BSERVE WITH HEART</b></h2>
+                <p class="text-abt3" style="text-align: left;">We were looking for natural materials that will help
+                    solve the problem.
+                    Then we found water hyacinth, which is considered a type of weed that
+                    affects ecosystems and aquatic life. It may seem useless, but when
+                    brought through the processing, we found it has some properties that
+                    are very well suited to being the main material of our utensils:
+                    shockproof, leakproof, and good heat and cold storage. Who would
+                    have thought, that one day these overlooked plants were going to
+                    become the heroes that would save the world.</p>
+            </div>
+            <div class="col50">
+                <div class="img-abt3">
+                    <img src="https://pbs.twimg.com/media/E0CQi6kVUAYgxL_?format=jpg&name=large">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--about4-->
+
+    <section class="abt4" id="abt4" data-aos="fade-right">
+        <div class="row-abt4">
+            <div class="col20">
+                <div class="img-abt4">
+                    <img src="https://pbs.twimg.com/media/E0DPuuVVgAA4Jsw?format=jpg&name=large">
+                </div>
+            </div>
+            <div class="col30">
+                <p style="text-align: left;">
+                    From the empathy of the plastic waste combined with the ecological
+                    balance. Give us a rise to a commitment; to create things that are
+                    friendly to both people and nature. These are why "Chava" is founded,
+                    we are a brand of natural containers, with the hope to help reduce
+                    problems, and raise awareness of the value of the environment around
+                    everyone.
+            </div>
+            <div class="col10">
+                <div class="imgbg-abt4">
+                    <img src="https://pbs.twimg.com/media/E0DWaVOVIAUhsNB?format=png&name=900x900">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--about5-->
+
+    <section class="abt5" id="abt5" data-aos="slide-up">
+        <div class="row-abt5">
+            <div class="col80">
+                <div class="img-abt5">
+                    <img src="https://pbs.twimg.com/media/E0CaMFGVoAAJ8l7?format=png&name=small">
+                </div>
+            </div>
+            <div class="col90">
+                <p style="margin-top: 1%; text-align: left;">
+                    We created chava to make the most sustainable packaging
+                    in the most ethical way possible. All our products are 100%
+                    natural, compostable and biodegradable.</p>
+            </div>
+            <div class="col70">
+            </div>
+        </div>
+    </section>
+
+    <!--about6-->
+
+    <section class="abt6" id="abt6" data-aos="zoom-in">
+        <div class="row-abt6">
+            <div class="col100">
+                <h1 class="title-abt6">
+                    <b><span>W</span>HO<br>&nbsp;&nbsp;ARE<br>&nbsp;&nbsp;WE?</b>
+                </h1>
+                <p class="text-abt6" style="text-align: left;">We are group of 4 friends; Memy, Mina, Namfon and
+                    Nat,
+                    who gathered during COVID-19.
+                    Although we have different skill, but have the same matto "Choose wisely, for
+                    future"<br><br><br><br><br><br><br></p>
+            </div>
+            <div class="col110">
+                <div class="img-abt6">
+                    <img src="https://pbs.twimg.com/media/E0Dk9P5VEAIbb1H?format=jpg&name=large">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--aos https://www.youtube.com/watch?v=ptfUwPJbGlQ https://github.com/michalsnik/aos -->
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            offset: 400,
+            duration: 1000,
+        });
+    </script>
+
+    <!--footer-->
+    <footer class="text-center footer-bg">
+        <br>
+        <center>
+            <h3 style="font-family: Vidaloka; color: #202020; margin-top: 50px; margin-bottom: 20px;">LET'S GET
+                SOCIAL
+                @chavathailand</h3>
+        </center>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="social">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-lg fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="fa fa-lg fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="fa fa-lg fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="fa fa-lg fa-phone"></i></a></li>
+                    </ul>
+                </div>
+                <div>
+                    <p style="font-family:Arial, Helvetica, sans-serif; margin-top: 20px;">@2021 Chava Chava is a
+                        registered trademark of Chava private<br>limited registered in Thailand and other
+                        countries.All
+                        right reserved.</p><br>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+</body>
+
+</html>
